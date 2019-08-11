@@ -1,11 +1,11 @@
 ﻿@model ToolRental_FrontEnd.Models.Customer
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Customer Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit Customer Detials</h2>
 
 
 @using (Html.BeginForm())
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Customer</h4>
+        <h4>Customer Details</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CustomerID)
@@ -36,15 +36,15 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.WorkspaceID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WorkspaceID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WorkspaceID, "", new { @class = "text-danger" })
-            </div>
+			<div class="col-md-10">
+				@Html.DropDownListFor(model => model.WorkspaceID, Model.Workspace, " - Please select a workspace - ", new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.WorkspaceID, "", new { @class = "text-danger" })
+			</div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>

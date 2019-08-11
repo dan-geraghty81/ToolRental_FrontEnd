@@ -40,6 +40,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Workspaces", workspace).Result;
+				TempData["SuccessMessage"] = "Workspace record created successfully.";
 				return RedirectToAction("Index");
 			}
 			catch
@@ -64,6 +65,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Workspaces/{id}", workspace).Result;
+				TempData["SuccessMessage"] = "Workspace record updated successfully.";
 				if (response.IsSuccessStatusCode)
 					return RedirectToAction("Index");
 
@@ -91,6 +93,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Workspaces/{id}").Result;
+				TempData["SuccessMessage"] = "Workspace record deleted successfully.";
 				return RedirectToAction("Index");
 			}
 			catch

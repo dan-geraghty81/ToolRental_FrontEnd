@@ -1,17 +1,22 @@
-﻿@model IEnumerable<ToolRental_FrontEnd.Models.Customer>
+﻿@model IEnumerable<ToolRental_FrontEnd.Controllers.CustomerListViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customer List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Customer List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	<a href="@Url.Action("Create", "Customer")" class="btn btn-primary">
+		<i class="glyphicon glyphicon-file"></i> Create New
+	</a>
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.CustomerName)
         </th>
@@ -19,7 +24,7 @@
             @Html.DisplayNameFor(model => model.SafetyInduction)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WorkspaceID)
+            @Html.DisplayNameFor(model => model.Workspace)
         </th>
         <th></th>
     </tr>
@@ -27,19 +32,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.CustomerName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SafetyInduction)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.WorkspaceID)
+            @Html.DisplayFor(modelItem => item.Workspace)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
-        </td>
+		<td>
+			@Html.ActionLink(" Edit", "Edit", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-pencil" }) |
+			@Html.ActionLink(" Details", "Details", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+			@Html.ActionLink(" Delete", "Delete", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-trash" })
+		</td>
     </tr>
 }
 

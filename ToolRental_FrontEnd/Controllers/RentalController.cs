@@ -40,17 +40,17 @@ namespace ToolRental_FrontEnd.Controllers
 			response = WebClient.ApiClient.GetAsync("Customers").Result;
 			IList<Customer> customers = response.Content.ReadAsAsync<IList<Customer>>().Result;
 
-			response = WebClient.ApiClient.GetAsync("Tools").Result;
+			response = WebClient.ApiClient.GetAsync("Movies").Result;
 			IList<Tool> tools = response.Content.ReadAsAsync<IList<Tool>>().Result;
 
 			var customerRentalDetails = new CustomerRentalDetailsViewModel
 			{
 				Rental = rental,
-				CustomerName = customers.Where(fn => fn.CustomerID == rental.CustomerID).Select(f => f.CustomerName).FirstOrDefault(),
+				CustomerName = customers.Where(cu => cu.CustomerID == rental.CustomerID).Select(c => c.CustomerName).FirstOrDefault(),
 				RentedTools = rental.RentalItems.Select(ri => new CustomerToolsViewModel
 				{
 					RentalID = ri.RentalId,
-					ToolName = tools.Where(t => t.ToolID == ri.ToolID).Select(s => s.ToolName).FirstOrDefault()
+					ToolName = tools.Where(m => m.ToolID == ri.ToolID).Select(s => s.ToolName).FirstOrDefault()
 				}).ToList()
 			};
 
@@ -80,7 +80,7 @@ namespace ToolRental_FrontEnd.Controllers
 			{
 				HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("Rentals", rental).Result;
 				rental = response.Content.ReadAsAsync<Rental>().Result;
-
+				TempData["SuccessMessage"] = "Main Rental record created successfully.";
 				// get the Rental Items based on the RentalId of the model Rental
 				response = WebClient.ApiClient.GetAsync($"RentalItemsById/{rental.RentalID}").Result;
 				IList<RentalItem> rentalItems = response.Content.ReadAsAsync<List<RentalItem>>().Result;
@@ -128,6 +128,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"Rentals/{Id}", rental).Result;
+				TempData["SuccessMessage"] = "Rental record updated successfully.";
 				if (response.IsSuccessStatusCode)
 					return RedirectToAction("Index");
 
@@ -172,6 +173,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"Rentals/{Id}").Result;
+				TempData["SuccessMessage"] = "Rental record deleted successfully.";
 				return RedirectToAction("Index");
 			}
 			catch
@@ -199,6 +201,7 @@ namespace ToolRental_FrontEnd.Controllers
 			{
 				int Id = rentalItem.RentalId;
 				HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("RentalItems", rentalItem).Result;
+				TempData["SuccessMessage"] = "Tools Rental added successfully.";
 				return RedirectToAction("Edit", new { Id });
 			}
 			catch
@@ -225,6 +228,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"RentalItems/{Id}", rentalItem).Result;
+				TempData["SuccessMessage"] = "Tool Rental record updated successfully.";
 				int rentalId = rentalItem.RentalId;
 				if (response.IsSuccessStatusCode)
 					return RedirectToAction("Edit", new { id = rentalId });
@@ -234,8 +238,6 @@ namespace ToolRental_FrontEnd.Controllers
 			{
 				return View();
 			}
-
-
 		}
 
 		//GET: DeleteRentedTool
@@ -259,6 +261,7 @@ namespace ToolRental_FrontEnd.Controllers
 			try
 			{
 				HttpResponseMessage response = WebClient.ApiClient.DeleteAsync($"RentalItems/{Id}").Result;
+				TempData["SuccessMessage"] = "Tool Rental deleted successfully.";
 				var rentalItemDeleted = response.Content.ReadAsAsync<RentalItem>().Result;
 				return RedirectToAction("Edit", new { id = rentalItemDeleted.RentalId });
 			}

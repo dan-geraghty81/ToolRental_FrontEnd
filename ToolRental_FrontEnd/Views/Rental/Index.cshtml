@@ -1,52 +1,54 @@
 ﻿@model IEnumerable<ToolRental_FrontEnd.ViewModels.RentalListViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Rental List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Rental List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	<a href="@Url.Action("Create", "Rental")" class="btn btn-primary">
+		<i class="glyphicon glyphicon-file"></i> Create New
+	</a>
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RentalID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateRented)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateReturned)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.RentalID)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CustomerName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateRented)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateReturned)
+		</th>
+		<th></th>
+	</tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateRented)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateReturned)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.RentalID)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.CustomerName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateRented)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateReturned)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.RentalID }, new { @class = "glyphicon glyphicon-pencil" }) |
+			@Html.ActionLink("Details", "Details", new { id = item.RentalID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+			@Html.ActionLink("Delete", "Delete", new { id = item.RentalID }, new { @class = "glyphicon glyphicon-trash" })
+		</td>
+	</tr>
 }
 
 </table>

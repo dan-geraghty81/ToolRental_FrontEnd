@@ -1,27 +1,45 @@
 ﻿@model ToolRental_FrontEnd.ViewModels.CustomerRentalDetailsViewModel
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>CustomerRentalDetailsViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </dt>
+	<h4>CustomerRentalDetailsViewModel</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.CustomerName)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerName)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.CustomerName)
+		</dd>
+		<dt>Date Rented</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Rental.DateRented)
+		</dd>
+		<dt>Date Returned</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Rental.DateReturned)
+		</dd>
 
-    </dl>
+	</dl>
+</div>
+<div>
+	<h4>Tools Borrowed</h4>
+	<ul>
+		@foreach (var movie in Model.RentedTools)
+		{
+			<li>@movie.ToolName</li>
+		}
+	</ul>
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Rental.RentalID }) |
+	@Html.ActionLink("Back to List", "Index")
 </p>

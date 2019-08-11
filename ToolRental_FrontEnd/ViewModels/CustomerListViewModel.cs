@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ToolRental_FrontEnd.Models
+namespace ToolRental_FrontEnd.Controllers
 {
-	public class Customer
+	public class CustomerListViewModel
 	{
 		public int CustomerID { get; set; }
 		[Display(Name = "Customer Name")]
@@ -15,8 +15,6 @@ namespace ToolRental_FrontEnd.Models
 		[Display(Name = "Safety Induction")]
 		public Nullable<bool> SafetyInduction { get; set; }
 		[Display(Name = "Workspace Name")]
-		public int WorkspaceID { get; set; }
-		[Display(Name = "Workspace Name")]
-		public IEnumerable<SelectListItem> Workspace { get; set; }
+		public String Workspace { get; set; }
 	}
 }

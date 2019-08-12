@@ -29,33 +29,39 @@
 		<th>
 			@Html.DisplayNameFor(model => model.Rented)
 		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.PicFileName)
+		</th>
 		<th></th>
 	</tr>
 
 	@foreach (var item in Model)
 	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.ToolName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Brand)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Inactive)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Comments)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Rented)
-			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-pencil" }) |
-				@Html.ActionLink("Details", "Details", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-list-alt" }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-trash" })
-			</td>
-		</tr>
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.ToolName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Brand)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Inactive)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Comments)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Rented)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PicFileName)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-pencil" }) |
+			@Html.ActionLink("Details", "Details", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+			@Html.ActionLink("Delete", "Delete", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-trash" })
+		</td>
+	</tr>
 	}
 
 </table>

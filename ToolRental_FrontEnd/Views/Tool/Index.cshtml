@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<ToolRental_FrontEnd.Models.Tool>
 
 @{
-    ViewBag.Title = "Tool List";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Tool List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Tool List</h2>
@@ -13,48 +13,60 @@
 	</a>
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ToolName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Brand)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Inactive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rented)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ToolName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Brand)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Inactive)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Comments)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Rented)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToolName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Inactive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rented)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ToolID }, new { @class = "glyphicon glyphicon-pencil" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ToolID }, new { @class = "glyphicon glyphicon-list-alt" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ToolID }, new { @class = "glyphicon glyphicon-trash" })
-        </td>
-    </tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ToolName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Brand)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Inactive)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Comments)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Rented)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-pencil" }) |
+				@Html.ActionLink("Details", "Details", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.ToolID }, new { @class = "glyphicon glyphicon-trash" })
+			</td>
+		</tr>
+	}
 
 </table>
+@section scripts
+{
+	<script>
+		$(function () {
+			var successMessage = '@TempData["SuccessMessage"]'
+			if (successMessage != '')
+				alertify.success(successMessage);
+		});
+	</script>
+}
+

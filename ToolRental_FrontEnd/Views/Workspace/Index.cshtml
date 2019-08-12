@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<ToolRental_FrontEnd.Models.Workspace>
 
 @{
-    ViewBag.Title = "Workspaces";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Workspaces";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Workspaces</h2>
@@ -13,24 +13,35 @@
 	</a>
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkspaceName)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.WorkspaceName)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkspaceName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorkspaceID }, new { @class = "glyphicon glyphicon-pencil" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorkspaceID }, new { @class = "glyphicon glyphicon-list-alt" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorkspaceID }, new { @class = "glyphicon glyphicon-trash" })
-        </td>
-    </tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.WorkspaceName)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.WorkspaceID }, new { @class = "glyphicon glyphicon-pencil" }) |
+				@Html.ActionLink("Details", "Details", new { id = item.WorkspaceID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.WorkspaceID }, new { @class = "glyphicon glyphicon-trash" })
+			</td>
+		</tr>
+	}
 
 </table>
+@section scripts
+{
+	<script>
+		$(function () {
+			var successMessage = '@TempData["SuccessMessage"]'
+			if (successMessage != '')
+				alertify.success(successMessage);
+		});
+	</script>
+}

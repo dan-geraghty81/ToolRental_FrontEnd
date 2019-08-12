@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<ToolRental_FrontEnd.Controllers.CustomerListViewModel>
 
 @{
-    ViewBag.Title = "Customer List";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Customer List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customer List</h2>
@@ -13,42 +13,54 @@
 	</a>
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SafetyInduction)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Workspace)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.CustomerID)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CustomerName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.SafetyInduction)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Workspace)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SafetyInduction)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Workspace)
-        </td>
-		<td>
-			@Html.ActionLink(" Edit", "Edit", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-pencil" }) |
-			@Html.ActionLink(" Details", "Details", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-list-alt" }) |
-			@Html.ActionLink(" Delete", "Delete", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-trash" })
-		</td>
-    </tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.CustomerID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CustomerName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SafetyInduction)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Workspace)
+			</td>
+			<td>
+				@Html.ActionLink(" Edit", "Edit", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-pencil" }) |
+				@Html.ActionLink(" Details", "Details", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-list-alt" }) |
+				@Html.ActionLink(" Delete", "Delete", new { id = item.CustomerID }, new { @class = "glyphicon glyphicon-trash" })
+			</td>
+		</tr>
+	}
 
 </table>
+@section scripts
+{
+	<script>
+		$(function () {
+			var successMessage = '@TempData["SuccessMessage"]'
+			if (successMessage != '')
+				alertify.success(successMessage);
+		});
+	</script>
+}
+

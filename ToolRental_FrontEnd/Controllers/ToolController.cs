@@ -115,5 +115,9 @@ namespace ToolRental_FrontEnd.Controllers
 			return Json("File uploaded successfully!");
 		}
 
+		public ActionResult GoToReport()
+		{
+			return RedirectToAction("GetRentalCountData", "Report");
+		}
 	}
 }

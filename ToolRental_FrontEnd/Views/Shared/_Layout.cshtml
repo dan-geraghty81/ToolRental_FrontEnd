@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title - Tool Rental</title>
 	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/Site.css")
 	@Scripts.Render("~/bundles/modernizr")
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
@@ -28,6 +29,12 @@
 					<li>@Html.ActionLink("Workspaces", "Index", "Workspace")</li>
 					<li>@Html.ActionLink("Tools", "Index", "Tool")</li>
 					<li>@Html.ActionLink("Rentals", "Index", "Rental")</li>
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports</a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("Tool Rental Count", "GetToolRentalCountReport", "Report")</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>

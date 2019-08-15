@@ -1,81 +1,116 @@
 ﻿@model ToolRental_FrontEnd.Models.Tool
 
 @{
-    ViewBag.Title = "Create Tool";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Create Tool";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create Tool</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-	<h4>Tool</h4>
-	<hr />
-	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-	<div class="form-group">
-		@Html.LabelFor(model => model.ToolName, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.ToolName, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.ToolName, "", new { @class = "text-danger" })
-		</div>
-	</div>
+	@Html.AntiForgeryToken()
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+	<div class="form-horizontal">
+		<h4>Tool</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.ToolName, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.ToolName, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.ToolName, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.Inactive, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.Inactive, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Inactive, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Inactive, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Inactive, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Inactive, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.Rented, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.Rented, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Rented, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.PicFileName, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.PicFileName, new { htmlAttributes = new { @class = "form-control", @id = "picFileName", @readonly = "readonly" } })
-			@Html.ValidationMessageFor(model => model.PicFileName, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Rented, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Rented, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Rented, "", new { @class = "text-danger" })
+			</div>
 		</div>
-	</div>
 
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-10">
-			<input type="submit" value="Create" class="btn btn-success" />
+		<div class="form-group">
+			@Html.LabelFor(model => model.PicFileName, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.PicFileName, new { htmlAttributes = new { @class = "form-control", @id = "picFileName", @readonly = "readonly" } })
+				@Html.ValidationMessageFor(model => model.PicFileName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-success" />
+			</div>
 		</div>
 	</div>
-</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<h2>Drag & Drop Tool Image Here</h2>
+<div id="dropArea">
+	Drop your files here
 </div>
 
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
+<br />
+
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jqueryval")
+	<script src="~/Scripts/jquery.filedrop.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$('#dropArea').filedrop({
+				url: '@Url.Action("UploadFiles")',
+
+				allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
+				allowedfileextensions: ['.jpg', '.png', '.gif', '.JPG', '.PNG', '.GIF'],
+				paramname: 'files',
+				maxfiles: 1,
+				maxfilesize: 10, //in MB
+				dragOver: function () {
+					$('#dropArea').addClass('active-drop')
+				},
+				dragLeave: function () {
+					$('#dropArea').removeClass('active-drop')
+				},
+				drop: function () {
+					$('#dropArea').removeClass('active-drop')
+				},
+				afterAll: function () {
+					$('#dropArea').html('File uploaded successfully!')
+				},
+				uploadFinished: function (i, file, response, time) {
+					$('#picFileName').val(file.name)
+				}
+			})
+		})
+	</script>
 }

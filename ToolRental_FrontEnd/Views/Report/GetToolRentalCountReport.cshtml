@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ToolRental_FrontEnd.Models.ToolRentalCountReport>
+
+@{
+    ViewBag.Title = "Tool Rental Count Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tool Rental Count Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RentalCount)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RentalCount)
+        </td>
+    </tr>
+}
+
+</table>

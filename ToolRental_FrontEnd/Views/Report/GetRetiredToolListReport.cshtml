@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ToolRental_FrontEnd.Models.RetiredToolList>
+
+@{
+	ViewBag.Title = "Retired Tool List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Retired Tool List</h2>
+
+@using (Html.BeginForm("GetRetiredToolListReport", "Report", FormMethod.Get))
+{
+	@Html.Label("Search: ")
+	<input type="text" id="criteria" name="criteria" />
+	<input type="submit" value="Search" class="btn btn-success btn-med" />
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ToolName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Brand)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Comments)
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ToolName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Brand)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Comments)
+			</td>
+		</tr>
+	}
+
+</table>
+
+@using (Html.BeginForm("ExportRetiredToolData", "Report"))
+{
+	<button name="button" style="width:128px; height:48px; font-weight:bold" title="Export">Export to CSV</button>
+}

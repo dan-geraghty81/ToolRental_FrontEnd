@@ -33,6 +33,9 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports</a>
 						<ul class="dropdown-menu">
 							<li>@Html.ActionLink("Tool Rental Count", "GetToolRentalCountReport", "Report")</li>
+							<li>@Html.ActionLink("Current Rented Tool List", "GetCurrentRentalToolListReport", "Report")</li>
+							<li>@Html.ActionLink("Active Tool List", "GetCurrentActiveToolsReport", "Report")</li>
+							<li>@Html.ActionLink("Retired Tool List", "GetRetiredToolListReport", "Report")</li>
 						</ul>
 					</li>
 				</ul>

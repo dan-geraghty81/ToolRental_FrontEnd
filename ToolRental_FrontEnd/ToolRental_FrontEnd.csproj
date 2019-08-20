@@ -133,6 +133,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Models\CurrentActiveToolsReport.cs" />
+    <Compile Include="Models\CurrentRentedToolReport.cs" />
+    <Compile Include="Models\RetiredToolList.cs" />
     <Compile Include="Models\ToolRentalCountReport.cs" />
     <Compile Include="ViewModels\CustomerListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -151,6 +154,7 @@
     <Compile Include="ViewModels\CustomerRentalDetailsViewModel.cs" />
     <Compile Include="ViewModels\CustomerToolsViewModel.cs" />
     <Compile Include="ViewModels\RentalListViewModel.cs" />
+    <Compile Include="ViewModels\RentedToolsViewModel.cs" />
     <Compile Include="WebClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +260,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Report\GetToolRentalCountReport.cshtml" />
+    <Content Include="Views\Report\GetCurrentRentalToolListReport.cshtml" />
+    <Content Include="Views\Report\GetRetiredToolListReport.cshtml" />
+    <Content Include="Views\Report\GetCurrentActiveToolsReport.cshtml" />
+    <Content Include="Views\Report\DrawToolRentalCountChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
